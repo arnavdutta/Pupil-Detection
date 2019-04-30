@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 
 cap = cv2.VideoCapture('video.mp4')
+out = cv2.VideoWriter('output.avi',cv2.VideoWriter_fourcc('M','J','P','G'), 30, (500,450))
 
 while cap.isOpened():
     ret, frame = cap.read()
@@ -29,11 +30,12 @@ while cap.isOpened():
         cv2.imshow("roi", roi)
         # cv2.imshow('Threshold', threshold)
         # cv2.imshow('gray_roi', gray_roi)
-        
+        out.write(roi)
     else:
         cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
         
     if cv2.waitKey(15) & 0xFF == ord('q'): # Press 'Q' on the keyboard to exit the playback
         break
 cap.release()
+out.release()
 cv2.destroyAllWindows()
