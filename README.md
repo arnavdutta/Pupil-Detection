@@ -3,8 +3,8 @@
 
 ### Packages used
 
-1. cv2
-2. numpy
+1. OpenCV
+2. Numpy
 3. os
 4. shutil
 
